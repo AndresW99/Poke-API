@@ -1,9 +1,12 @@
+import { PokemonApi } from "./api/PokemonApi";
+import { AppRouter } from "./routes/AppRouter";
 
 
 function App() {
   return (
     <div>
-      Prueba de desarrollo
+      <AppRouter />
+      <PokemonApi />
     </div>
   );
 }
