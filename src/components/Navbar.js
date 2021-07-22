@@ -1,5 +1,5 @@
 import React from 'react';
-
+import poke from '../images/pokemon.png'
 import { makeStyles } from '@material-ui/core';
 import yellow from '@material-ui/core/colors/yellow';
 import { AppBar,
@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     text: {
         textDecoration: 'none',
         color: texto
+    },
+    logo: {
+        maxWidth: 120,
     }
 })); 
 
@@ -43,9 +46,13 @@ export const Navbar = () => {
                             </NavLink>
                         </Typography>
 
+                        <Typography variant="h6" className={classes.title}>
+                            <img src={poke} alt="logo" className={classes.logo} />
+                        </Typography>
+
                         <Button color="inherit">
                             <NavLink className={ classes.text } exact to="/pokes">
-                                Pokes
+                                Pokemones
                             </NavLink>
                         </Button>
                     </Toolbar>
