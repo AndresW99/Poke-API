@@ -6,8 +6,7 @@ import React, { useState } from 'react'
 
 export const Lista = (props) => {
     
-    const [, setPokeSelec] = useState({
-    })
+    const [, setPokeSelec] = useState([])
     
     const seleccionarFila = ( poke ) => {
 

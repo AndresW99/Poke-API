@@ -12,7 +12,6 @@ import { makeStyles,
          TableRow, 
          TextField,
          Button, } from '@material-ui/core';
-// import { Informacion } from '../components/Informacion';
 
 
 const useStyles = makeStyles({
@@ -87,7 +86,7 @@ export const PokemonApi = () => {
 
     return (
 
-        <div>
+        <>
             <TextField 
                 id="outlined-basic" 
                 label="Busca un Pokemon!!" 
@@ -130,10 +129,10 @@ export const PokemonApi = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        { filtrarPokemons && filtrarPokemons().map((infos, name) => <Lista key={name} info={infos}/>)}
+                        { filtrarPokemons && filtrarPokemons().map((infos, name) => <Lista key={name} info={infos}/>) }
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div>
+        </>
     )
 }
