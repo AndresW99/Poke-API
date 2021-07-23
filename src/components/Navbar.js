@@ -1,14 +1,18 @@
 import React from 'react';
-import poke from '../images/pokemon.png'
+
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import HomeIcon from '@material-ui/icons/Home';
+
 import { makeStyles } from '@material-ui/core';
-import yellow from '@material-ui/core/colors/yellow';
 import { AppBar,
          Toolbar,
          Typography,
          Button } from '@material-ui/core';
-
+import yellow from '@material-ui/core/colors/yellow';
+    
 import { NavLink } from 'react-router-dom';     
-
+import poke from '../images/pokemon.png'
+    
 
 const texto = yellow[500];
 
@@ -29,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     },
     logo: {
         maxWidth: 120,
+    },
+    color: {
+        color: yellow[300],
     }
 })); 
 
@@ -40,6 +47,7 @@ export const Navbar = () => {
         <div className={ classes.root }>
                 <AppBar position="static">
                     <Toolbar>
+                        <HomeIcon className={ classes.color } fontSize="small" />
                         <Typography variant="h6" className={classes.title}>
                             <NavLink className={ classes.text } activeClassName="active" exact to="/home">
                                 Home
@@ -54,6 +62,7 @@ export const Navbar = () => {
                             <NavLink className={ classes.text } exact to="/pokes">
                                 Pokemones
                             </NavLink>
+                            <ChevronRightIcon className={ classes.color } />
                         </Button>
                     </Toolbar>
                 </AppBar>

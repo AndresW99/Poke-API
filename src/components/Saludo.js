@@ -4,9 +4,9 @@ import { Box,
          CssBaseline,
          Grid,
          makeStyles,
-         Typography, CardMedia } from '@material-ui/core';
+         Typography } from '@material-ui/core';
 
-import saludos from '../images/saludo.jpg'
+import saludos from '../images/wallpaperPoke.jpg'
 import amarillo from '@material-ui/core/colors/yellow';
 import morado from '@material-ui/core/colors/purple';
 
@@ -33,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
       textAlign: "center",
       zIndex: 1,
     },
+    img: {
+      borderRadius: 30,
+      width: 500,
+    }
   }));
 
 export const Saludo = () => {
@@ -45,9 +49,10 @@ export const Saludo = () => {
             <Container maxWidth="md" >
                 <Box className={classes.typedContainer}>
                     <Grid container justifyContent="center">
-                        <CardMedia
-                          title="Andres"
-                          image={saludos}
+                        <img
+                          alt="Titulo"
+                          src={saludos}
+                          className={ classes.img }
                         />
                     </Grid>
                     <Typography className={classes.title} variant="h4">
