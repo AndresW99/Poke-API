@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Lista } from '../components/Lista'
 
-import { Container,
-         makeStyles,
+import { makeStyles,
          Paper,
          Table,
          TableBody,
@@ -13,6 +12,7 @@ import { Container,
          TableRow, 
          TextField,
          Button, } from '@material-ui/core';
+// import { Informacion } from '../components/Informacion';
 
 
 const useStyles = makeStyles({
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
         minWidth: 350,
     },
     margin: {
-        marginTop: 20
+        marginTop: 8
     }
 });
 
@@ -62,6 +62,7 @@ export const PokemonApi = () => {
                 axios.get(response.data.results[i].url)
                 .then( result => {
                     setPoke(prevArray => [...prevArray, result.data])
+                    // console.log(result.data);
                 })
             }
         })
@@ -87,57 +88,52 @@ export const PokemonApi = () => {
     return (
 
         <div>
+            <TextField 
+                id="outlined-basic" 
+                label="Busca un Pokemon!!" 
+                variant="standard" 
+                className={ classes.margin }
+                fullWidth
+                value={ search }
+                onChange={ onSearchChange }
+            />
+            <br />
+            <Button 
+                variant="contained" 
+                color="primary" 
+                className={ classes.margin } 
+                onClick={ prevPage }
+            >
+                Anterior
+            </Button>
+            &nbsp;
+            <Button 
+                variant="contained" 
+                color="primary" 
+                className={ classes.margin } 
+                onClick={ nextPage }
+            >
+                Siguiente
+            </Button>
 
-            <Container maxWidth="md">
+            <hr />
 
-                <TextField 
-                    id="outlined-basic" 
-                    label="Busca un Pokemon!!" 
-                    variant="standard" 
-                    className={ classes.margin }
-                    fullWidth
-                    value={ search }
-                    onChange={ onSearchChange }
-                />
-
-                <br />
-
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    className={ classes.margin } 
-                    onClick={ prevPage }
-                >
-                    Anterior
-                </Button>
-                &nbsp;
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    className={ classes.margin } 
-                    onClick={ nextPage }
-                >
-                    Siguiente
-                </Button>
-
-                <TableContainer className={ classes.margin } component={Paper}>
-                    <Table className={ classes.table } size="small" aria-label="a dense table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>ID</TableCell>
-                                <TableCell align="right">Nombre&nbsp;</TableCell>
-                                <TableCell align="right">Primera habilidad&nbsp;</TableCell>
-                                <TableCell align="right">Img&nbsp;</TableCell>
-                                <TableCell align="right">Acciones&nbsp;</TableCell>
-                            </TableRow>
-                        </TableHead>
-
-                        <TableBody>
-                            { filtrarPokemons && filtrarPokemons().map((infos, name) => <Lista key={name} info={infos}/>)}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </Container>
+            <TableContainer className={ classes.margin } component={Paper}>
+                <Table className={ classes.table } size="small" aria-label="a dense table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>ID</TableCell>
+                            <TableCell align="right">Nombre&nbsp;</TableCell>
+                            <TableCell align="right">Primera habilidad&nbsp;</TableCell>
+                            <TableCell align="right">Img&nbsp;</TableCell>
+                            <TableCell align="right">Acciones&nbsp;</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        { filtrarPokemons && filtrarPokemons().map((infos, name) => <Lista key={name} info={infos}/>)}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     )
 }
