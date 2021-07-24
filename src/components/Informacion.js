@@ -5,14 +5,15 @@ import { Box,
          Divider,
          makeStyles,
          Typography } from '@material-ui/core'
-import React from 'react'
-import pika from '../images/pikachu.jpg';
+import React, { useContext } from 'react'
+import { UserContext } from '../UserContext';
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
-      maxWidth: 345
+      maxWidth: 345,
+      borderRadius: 20,
     },
     details: {
       display: 'flex',
@@ -23,32 +24,35 @@ const useStyles = makeStyles((theme) => ({
     },
     cover: {
       width: 151,
-      height: 228
+      height: 228,
+
     },
     margen: {
         marginTop: 24,
-        marginBottom: 24
+        marginBottom: 24,
     },
   }));
 
-export const Informacion = (props) => {
+export const Informacion = () => {
+
+    const userContext = useContext(UserContext);
 
     const classes = useStyles();
 
     return (
         <div className={ classes.margen } >
-            <Box display="flex" justifyContent="center" alignItems="center">
-                <Card className={classes.root}>
+            <Box display="flex" justifyContent="center" alignItems="center"  >
+                <Card className={classes.root}  >
                     <CardMedia
                         className={classes.cover}
-                        image={pika}
+                        image={ userContext.data.result.sprites.front_shiny }
                         title="Live from space album cover"
                     />
                     <div className={classes.details}>
                         <CardContent className={classes.content}>
 
                         <Typography component="h5" variant="h5">
-                            Pikachu
+                            {  userContext.data.result.name  }
                         </Typography>
 
                         <Divider/>
@@ -58,7 +62,7 @@ export const Informacion = (props) => {
                         </Typography>
 
                         <Typography variant="body1" color="textSecondary">
-                            Electrico
+                            { userContext.data.result.types[0].type.name } 
                         </Typography>
 
                         <Typography variant="subtitle1" color="textPrimary">
@@ -66,7 +70,7 @@ export const Informacion = (props) => {
                         </Typography>
 
                         <Typography variant="body1" color="textSecondary">
-                            Impactrueno
+                            { userContext.data.result.moves[0].move.name }
                         </Typography>
 
                         <Typography variant="subtitle1" color="textPrimary">
@@ -74,7 +78,7 @@ export const Informacion = (props) => {
                         </Typography>
 
                         <Typography variant="body1" color="textSecondary">
-                            Rayo
+                            { userContext.data.result.moves[1].move.name  }
                         </Typography>
 
                         </CardContent>

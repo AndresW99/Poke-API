@@ -1,17 +1,22 @@
 import { 
          TableCell,
          TableRow, Button} from '@material-ui/core'
-import React, { useState } from 'react'
-// import { Informacion } from './Informacion'
+import React, { useContext, useState } from 'react'
+import { UserContext } from '../UserContext'
+
+
 
 export const Lista = (props) => {
+
+    const { obtener } = useContext(UserContext);
+
+    const [, setPokeSelec] = useState([]);
     
-    const [, setPokeSelec] = useState([])
-    
+    // Extrae los datos de la tabla
     const seleccionarFila = ( poke ) => {
 
         setPokeSelec( poke );
-        console.log(poke);
+        obtener(poke)
     }
     
     return (
@@ -31,6 +36,7 @@ export const Lista = (props) => {
                         variant="contained" 
                         color="primary" 
                         size="small" 
+                        // Aqui extraigo la data de la tabla
                         onClick={ () => seleccionarFila( props.info ) }
                     >
                         Seleccionar
