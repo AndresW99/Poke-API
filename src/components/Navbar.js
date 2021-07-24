@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     }
 })); 
 
+// Barra de navegación con las rutas a cada pagina
 export const Navbar = () => {
 
     const classes = useStyles();

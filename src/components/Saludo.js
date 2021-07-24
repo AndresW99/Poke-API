@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
       color: amarillo,
+      marginTop: 10
     },
     subtitle: {
       color: morado[800],

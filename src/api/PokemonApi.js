@@ -26,33 +26,46 @@ const useStyles = makeStyles({
 export const PokemonApi = () => {
 
     const classes = useStyles();
+    //Estado para guardar los resultados de la API
     const [poke, setPoke] = useState([]);
+    //Estado para el manejo de la paginación local
     const [currentPAge, setCurrentPAge] = useState(0);
+    //Estado para el buscador de pokemon
     const [search, setSearch] = useState('');
 
+    // Funcion para filtrar los pokemones en 5
     const filtrarPokemons = () => {
-
+        // Si estamos en pagina 0 muestra a 5 pokes y suma 5 cada que avanzamos una pag.
         if( search === 0 ) 
             return poke.slice(currentPAge, currentPAge + 5);
 
+        //Filtra los pokes por nombre
         const filtered = poke.filter( poke => poke.name.includes( search ) )
         return filtered.slice( currentPAge, currentPAge + 5);
 
     }
-
+    // Avanzamos de pagina
     const nextPage = () => {
 
         if( poke.filter( b => b.name.includes( search ) ).length > currentPAge + 5 )
         setCurrentPAge( currentPAge + 5 );
     }
 
+    // Regresamos pagina validando que estemos una por delante de 0
     const prevPage = () => {
 
         if( currentPAge > 0 )
             setCurrentPAge( currentPAge - 5 );
     }
- 
 
+    // Buscador de pokemon
+    const onSearchChange = ({target}) => {
+
+        setCurrentPAge(0);
+        setSearch( target.value )
+
+    }
+    // Llamada a la API con ayuda de un ciclo for para traer mas info de los podes seleccionados
     const data = () => {        
         
         axios.get(`https://pokeapi.co/api/v2/pokemon?limit=100`).then(( response ) => {
@@ -61,7 +74,6 @@ export const PokemonApi = () => {
                 axios.get(response.data.results[i].url)
                 .then( result => {
                     setPoke(prevArray => [...prevArray, result.data])
-                    // console.log(result.data);
                 })
             }
         })
@@ -70,19 +82,13 @@ export const PokemonApi = () => {
         })
 
     }
-
+    // Cargamos la data al entrar al componente
     useEffect(() => {
 
         data()
 
     }, []);
 
-    const onSearchChange = ({target}) => {
-
-        setCurrentPAge(0);
-        setSearch( target.value )
-
-    }
 
     return (
 
@@ -121,11 +127,10 @@ export const PokemonApi = () => {
                 <Table className={ classes.table } size="small" aria-label="a dense table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell align="right">Nombre&nbsp;</TableCell>
-                            <TableCell align="right">Primera habilidad&nbsp;</TableCell>
-                            <TableCell align="right">Img&nbsp;</TableCell>
-                            <TableCell align="right">Acciones&nbsp;</TableCell>
+                            <TableCell align="center">Nombre</TableCell>
+                            <TableCell align="center">Primera habilidad</TableCell>
+                            <TableCell align="center">Img</TableCell>
+                            <TableCell align="center">Acciones</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

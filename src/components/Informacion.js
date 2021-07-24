@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       maxWidth: 345,
       borderRadius: 20,
+      background: '#8BA8F9'
     },
     details: {
       display: 'flex',
@@ -23,9 +24,8 @@ const useStyles = makeStyles((theme) => ({
       flex: '1 0 auto',
     },
     cover: {
-      width: 151,
-      height: 228,
-
+      width: 200,
+      height: 225,
     },
     margen: {
         marginTop: 24,
@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const Informacion = () => {
 
+    //Recibimos la data de la tabla por medio de context y la renderizamos
     const userContext = useContext(UserContext);
 
     const classes = useStyles();
@@ -66,7 +67,7 @@ export const Informacion = () => {
                         </Typography>
 
                         <Typography variant="subtitle1" color="textPrimary">
-                            Primera habilidad:
+                            Ataque primario:
                         </Typography>
 
                         <Typography variant="body1" color="textSecondary">
@@ -74,7 +75,7 @@ export const Informacion = () => {
                         </Typography>
 
                         <Typography variant="subtitle1" color="textPrimary">
-                            Segunda habilidad:
+                            Ataque secundario:
                         </Typography>
 
                         <Typography variant="body1" color="textSecondary">

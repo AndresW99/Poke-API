@@ -10,13 +10,14 @@ import { Pokes } from '../pages/Pokes';
 
 export const AppRouter = () => {
 
-
+    // Renderizamos el navbar, definimos las rutas y asignamos comodin en caso de
+    // ir a una ruta que no exista
     return (
 
         <Router>
 
             <div>
-
+                
                 <Navbar />
                 <Switch>
 

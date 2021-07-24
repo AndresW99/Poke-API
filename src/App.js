@@ -3,34 +3,35 @@ import { useState } from 'react';
 import { AppRouter } from './routes/AppRouter';
 import { theme } from './themeConfig';
 import { UserContext } from './UserContext';
-import pika from './images/pikachu.jpg';
+import lupa from './images/lupa.png';
 
 function App() {
 
+  // Estado en donde se guardara el context, data por defecto
   const [data, setData] = useState({
     result: {
-      name: 'Example',
+      name: 'Selecciona un pokemon!',
       types: [
         {
           type: {
-            name: 'Example'
+            name: 'Aquí aparecera su tipo!'
           }
         }
       ],
       moves: [
         {
           move: {
-            name: 'Example'
+            name: 'Su ataque principal!'
           }
         },
         {
           move: {
-            name: 'Example2'
+            name: 'Su ataque secundario!'
           }
         }
       ],
       sprites: {
-        front_shiny: pika 
+        front_shiny: lupa 
       }
     }
   });
