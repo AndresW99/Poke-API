@@ -81,7 +81,6 @@ export const Informacion = () => {
                         <Typography variant="body1" color="textSecondary">
                             { userContext.data.result.moves[1].move.name  }
                         </Typography>
-
                         </CardContent>
                     </div>
                 </Card>

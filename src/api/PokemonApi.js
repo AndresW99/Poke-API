@@ -57,7 +57,7 @@ export const PokemonApi = () => {
         if( currentPAge > 0 )
             setCurrentPAge( currentPAge - 5 );
     }
-
+    
     // Buscador de pokemon
     const onSearchChange = ({target}) => {
 
@@ -69,7 +69,7 @@ export const PokemonApi = () => {
     const data = () => {        
         
         axios.get(`https://pokeapi.co/api/v2/pokemon?limit=100`).then(( response ) => {
-
+            // Iteramos la cantidad de pokes que recibimos para tener mas info de cada uno
             for(let i = 0; i < response.data.results.length; i++  ) {
                 axios.get(response.data.results[i].url)
                 .then( result => {
